@@ -1,0 +1,127 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor USER
+actor ADMIN
+actor ARSITEK
+actor OWNER
+
+rectangle "Sistem Website Desain Interior" {
+  
+  ' Authentication
+  usecase "Login" as UC_Login
+  usecase "Sign Up" as UC_SignUp
+  usecase "Profil" as UC_Profil
+  usecase "Notifikasi" as UC_Notif
+  
+  ' User Features
+  usecase "Dasbord" as UC_Dasbord
+  usecase "Pemesanan Saya" as UC_PemesananSaya
+  usecase "Buat Pesanan" as UC_BuatPesanan
+  usecase "Mengisi Form\nPemesanan" as UC_IsiForm
+  usecase "Proses Pembayaran\nMidtrans" as UC_Bayar
+  usecase "Cancel Pesanan" as UC_Cancel
+  usecase "Feedback" as UC_Feedback
+  
+  ' Web Profil
+  usecase "Web Profil" as UC_WebProfil
+  usecase "Beranda" as UC_Beranda
+  usecase "Tentang Kami" as UC_Tentang
+  usecase "Portofolio" as UC_Porto
+  usecase "Layanan Kami" as UC_Layanan
+  usecase "Kontak" as UC_Kontak
+  usecase "Kirim Pesan\nKontak" as UC_KirimPesan
+
+  ' Admin/Arsitek/Owner Features
+  usecase "Dashboard Admin" as UC_DashAdmin
+  usecase "Kategori Proyek" as UC_Kategori
+  usecase "Proyek" as UC_Proyek
+  usecase "Manajemen Team" as UC_Team
+  usecase "Pemesanan" as UC_PemesananAdmin
+  usecase "Data User" as UC_DataUser
+  usecase "Analisis Resiko" as UC_Resiko
+  usecase "Team Performance" as UC_Performance
+  usecase "Email Masuk" as UC_Email
+  usecase "Pengaturan\nWeb Profil" as UC_Pengaturan
+
+  ' Owner Exclusive
+  usecase "Manajemen Admin" as UC_ManAdmin
+  usecase "Laporan" as UC_Laporan
+  usecase "Export Laporan" as UC_Export
+  
+  usecase "Log Out" as UC_Logout
+}
+
+' Connections - User
+USER -- UC_Login
+USER -- UC_SignUp
+USER -- UC_Profil
+USER -- UC_Notif
+USER -- UC_Dasbord
+USER -- UC_BuatPesanan
+USER -- UC_WebProfil
+USER -- UC_Logout
+
+' Include/Extend User
+UC_Dasbord ..> UC_PemesananSaya : <<include>>
+UC_BuatPesanan ..> UC_IsiForm : <<include>>
+UC_PemesananSaya <.. UC_Bayar : <<extends>>
+UC_PemesananSaya <.. UC_Cancel : <<extends>>
+UC_PemesananSaya <.. UC_Feedback : <<extends>>
+
+UC_WebProfil ..> UC_Beranda : <<include>>
+UC_WebProfil ..> UC_Tentang : <<include>>
+UC_WebProfil ..> UC_Porto : <<include>>
+UC_WebProfil ..> UC_Layanan : <<include>>
+UC_WebProfil ..> UC_Kontak : <<include>>
+UC_Kontak <.. UC_KirimPesan : <<extends>>
+
+' Connections - Admin
+ADMIN -- UC_Login
+ADMIN -- UC_DashAdmin
+ADMIN -- UC_Kategori
+ADMIN -- UC_Proyek
+ADMIN -- UC_Team
+ADMIN -- UC_PemesananAdmin
+ADMIN -- UC_DataUser
+ADMIN -- UC_Resiko
+ADMIN -- UC_Performance
+ADMIN -- UC_Email
+ADMIN -- UC_Pengaturan
+ADMIN -- UC_Logout
+
+' Connections - Arsitek
+ARSITEK -- UC_Login
+ARSITEK -- UC_DashAdmin
+ARSITEK -- UC_Proyek
+ARSITEK -- UC_PemesananAdmin
+ARSITEK -- UC_Pengaturan
+ARSITEK -- UC_Logout
+
+' Connections - Owner
+OWNER -- UC_Login
+OWNER -- UC_DashAdmin
+OWNER -- UC_Kategori
+OWNER -- UC_Proyek
+OWNER -- UC_Team
+OWNER -- UC_PemesananAdmin
+OWNER -- UC_DataUser
+OWNER -- UC_Resiko
+OWNER -- UC_Performance
+OWNER -- UC_Email
+OWNER -- UC_Pengaturan
+OWNER -- UC_ManAdmin
+OWNER -- UC_Laporan
+OWNER -- UC_Logout
+
+' Include Owner
+UC_Laporan ..> UC_Export : <<include>>
+
+' Extend Web Profil Settings
+UC_Beranda <.. UC_Pengaturan : <<extends>>
+UC_Tentang <.. UC_Pengaturan : <<extends>>
+UC_Porto <.. UC_Pengaturan : <<extends>>
+UC_Layanan <.. UC_Pengaturan : <<extends>>
+
+@enduml

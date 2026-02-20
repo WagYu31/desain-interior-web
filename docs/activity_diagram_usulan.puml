@@ -1,0 +1,56 @@
+@startuml
+Title Activity Diagram Usulan
+
+|User|
+start
+:Membuka website\nPT. Astha Tunggal Makmur;
+
+repeat
+  :Login & Registrasi;
+  |Sistem|
+  if (Berhasil?) then (Iya)
+    :Menampilkan\nhalaman utama;
+    break
+  else (Tidak)
+    :Tampilkan pesan\nkesalahan;
+  endif
+|User|
+repeat while (true)
+
+:Memilih Layanan\nKami;
+
+|Sistem|
+:Menampilkan\nhalaman yang\ndipilih;
+
+|User|
+repeat
+  :Mengisi form\npemesanan;
+  |Sistem|
+  if (Data pemesanan\nLengkap?) then (Iya)
+    break
+  else (Tidak)
+    :Tampilkan pesan\nuntuk lengkapi data;
+  endif
+|User|
+repeat while (true)
+
+:Kirim permintaan ke\nadmin;
+
+|Admin|
+:Proses pesanan;
+:Update status\npesanan;
+
+if (Ada perubahan\nprogress?) then (Tidak)
+  :Tetap pada status\nterakhir;
+else (Iya)
+  :Status berubah;
+endif
+
+|Sistem|
+:Tampil status ke\nuser;
+
+|User|
+:Melihat riwayat\npemesanan & progress\npesanan;
+
+stop
+@enduml

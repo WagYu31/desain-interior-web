@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" modified="2026-02-11" type="device">
+<diagram id="activity-usulan" name="Activity Diagram Usulan">
+<mxGraphModel dx="1422" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1400" math="0" shadow="0">
+<root>
+<mxCell id="0"/>
+<mxCell id="1" parent="0"/>
+<mxCell id="sw1" value="User" style="shape=swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;" vertex="1" parent="1"><mxGeometry x="50" y="30" width="340" height="1320" as="geometry"/></mxCell>
+<mxCell id="sw2" value="Sistem" style="shape=swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=14;" vertex="1" parent="1"><mxGeometry x="390" y="30" width="340" height="1320" as="geometry"/></mxCell>
+<mxCell id="sw3" value="Admin" style="shape=swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;" vertex="1" parent="1"><mxGeometry x="730" y="30" width="300" height="1320" as="geometry"/></mxCell>
+<mxCell id="start1" value="" style="ellipse;fillColor=#000000;" vertex="1" parent="sw1"><mxGeometry x="150" y="50" width="40" height="40" as="geometry"/></mxCell>
+<mxCell id="a1" value="Membuka website&#xa;PT. Astha Tunggal Makmur" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw1"><mxGeometry x="85" y="120" width="170" height="50" as="geometry"/></mxCell>
+<mxCell id="e_start_a1" edge="1" source="start1" target="a1" parent="sw1"/>
+<mxCell id="a2" value="Login &amp; Registrasi" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw1"><mxGeometry x="100" y="200" width="140" height="40" as="geometry"/></mxCell>
+<mxCell id="e_a1_a2" edge="1" source="a1" target="a2" parent="sw1"/>
+<mxCell id="d1" value="Berhasil?" style="rhombus;whiteSpace=wrap;" vertex="1" parent="sw2"><mxGeometry x="110" y="190" width="120" height="60" as="geometry"/></mxCell>
+<mxCell id="e_a2_d1" edge="1" source="a2" target="d1" parent="1"/>
+<mxCell id="a3_ya" value="Menampilkan&#xa;halaman utama" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw2"><mxGeometry x="20" y="290" width="140" height="50" as="geometry"/></mxCell>
+<mxCell id="e_d1_ya" value="Iya" edge="1" source="d1" target="a3_ya" parent="sw2"/>
+<mxCell id="a3_tidak" value="Tampilkan pesan&#xa;kesalahan" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw2"><mxGeometry x="180" y="290" width="140" height="50" as="geometry"/></mxCell>
+<mxCell id="e_d1_tidak" value="Tidak" edge="1" source="d1" target="a3_tidak" parent="sw2"/>
+<mxCell id="e_tidak_back" style="edgeStyle=orthogonalEdgeStyle;entryX=1;entryY=0.5;" edge="1" source="a3_tidak" target="a2" parent="1"/>
+<mxCell id="a4" value="Memilih Layanan&#xa;Kami" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw1"><mxGeometry x="100" y="370" width="140" height="50" as="geometry"/></mxCell>
+<mxCell id="e_ya_a4" edge="1" source="a3_ya" target="a4" parent="1"/>
+<mxCell id="a5" value="Menampilkan&#xa;halaman yang&#xa;dipilih" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw2"><mxGeometry x="90" y="370" width="160" height="60" as="geometry"/></mxCell>
+<mxCell id="e_a4_a5" edge="1" source="a4" target="a5" parent="1"/>
+<mxCell id="a6" value="Mengisi form&#xa;pemesanan" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw1"><mxGeometry x="100" y="480" width="140" height="50" as="geometry"/></mxCell>
+<mxCell id="e_a5_a6" edge="1" source="a5" target="a6" parent="1"/>
+<mxCell id="d2" value="Data pemesanan&#xa;Lengkap?" style="rhombus;whiteSpace=wrap;" vertex="1" parent="sw2"><mxGeometry x="100" y="475" width="140" height="70" as="geometry"/></mxCell>
+<mxCell id="e_a6_d2" edge="1" source="a6" target="d2" parent="1"/>
+<mxCell id="a7_tidak" value="Tampilkan pesan&#xa;untuk lengkapi data" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw2"><mxGeometry x="90" y="580" width="160" height="50" as="geometry"/></mxCell>
+<mxCell id="e_d2_tidak" value="Tidak" edge="1" source="d2" target="a7_tidak" parent="sw2"/>
+<mxCell id="e_tidak2_back" style="edgeStyle=orthogonalEdgeStyle;entryX=1;entryY=0.5;" edge="1" source="a7_tidak" target="a6" parent="1"/>
+<mxCell id="a8" value="Kirim permintaan ke&#xa;admin" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw1"><mxGeometry x="95" y="600" width="150" height="50" as="geometry"/></mxCell>
+<mxCell id="e_d2_ya" value="Iya" style="edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;" edge="1" source="d2" target="a8" parent="1"/>
+<mxCell id="a9" value="Proses pesanan" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw3"><mxGeometry x="70" y="700" width="160" height="40" as="geometry"/></mxCell>
+<mxCell id="e_a8_a9" edge="1" source="a8" target="a9" parent="1"/>
+<mxCell id="a10" value="Update status&#xa;pesanan" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw3"><mxGeometry x="70" y="780" width="160" height="50" as="geometry"/></mxCell>
+<mxCell id="e_a9_a10" edge="1" source="a9" target="a10" parent="sw3"/>
+<mxCell id="d3" value="Ada perubahan&#xa;progress?" style="rhombus;whiteSpace=wrap;" vertex="1" parent="sw3"><mxGeometry x="80" y="870" width="140" height="70" as="geometry"/></mxCell>
+<mxCell id="e_a10_d3" edge="1" source="a10" target="d3" parent="sw3"/>
+<mxCell id="a11_tidak" value="Tetap pada status&#xa;terakhir" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw2"><mxGeometry x="20" y="880" width="150" height="50" as="geometry"/></mxCell>
+<mxCell id="e_d3_tidak" value="Tidak" edge="1" source="d3" target="a11_tidak" parent="1"/>
+<mxCell id="a11_ya" value="Status berubah" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw2"><mxGeometry x="190" y="880" width="130" height="40" as="geometry"/></mxCell>
+<mxCell id="e_d3_ya" value="Iya" edge="1" source="d3" target="a11_ya" parent="1"/>
+<mxCell id="merge1" value="" style="rhombus;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="sw2"><mxGeometry x="145" y="970" width="30" height="30" as="geometry"/></mxCell>
+<mxCell id="e_tidak_merge" edge="1" source="a11_tidak" target="merge1" parent="sw2"/>
+<mxCell id="e_ya_merge" edge="1" source="a11_ya" target="merge1" parent="sw2"/>
+<mxCell id="a12" value="Tampil status ke&#xa;user" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw2"><mxGeometry x="90" y="1040" width="160" height="50" as="geometry"/></mxCell>
+<mxCell id="e_merge_a12" edge="1" source="merge1" target="a12" parent="sw2"/>
+<mxCell id="a13" value="Melihat riwayat&#xa;pemesanan &amp; progress&#xa;pesanan" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="sw1"><mxGeometry x="85" y="1130" width="170" height="60" as="geometry"/></mxCell>
+<mxCell id="e_a12_a13" edge="1" source="a12" target="a13" parent="1"/>
+<mxCell id="end1" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="sw1"><mxGeometry x="145" y="1230" width="50" height="50" as="geometry"/></mxCell>
+<mxCell id="end1_inner" value="" style="ellipse;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="sw1"><mxGeometry x="150" y="1235" width="40" height="40" as="geometry"/></mxCell>
+<mxCell id="e_a13_end" edge="1" source="a13" target="end1" parent="sw1"/>
+</root>
+</mxGraphModel>
+</diagram>
+</mxfile>

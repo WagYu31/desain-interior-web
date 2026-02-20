@@ -1,0 +1,1034 @@
+/*
+|--------------------------------------------------------------------------
+| App Styles (SCSS Entry Point)
+|--------------------------------------------------------------------------
+| File ini adalah titik masuk utama untuk semua styling aplikasi Anda.
+| Alurnya adalah:
+| 1. Impor font & library eksternal.
+| 2. Definisikan/override variabel Bootstrap.
+| 3. Impor Bootstrap SCSS (yang akan menggunakan variabel kustom Anda).
+| 4. Tambahkan semua styling kustom Anda di bawah.
+*/
+
+/*==================================================
+= 1. IMPOR EKSTERNAL =
+==================================================*/
+
+@use "sass:color";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'toastr/build/toastr.min.css';
+
+
+/*==================================================
+= 2. VARIABEL KUSTOM & OVERRIDE BOOTSTRAP =
+==================================================*/
+
+$primary: #1a1919;
+$secondary: #898b8b;
+$dark: #2C3E50;
+$light: #F8F9FA;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$muted: #6c757d;
+
+$body-bg: #fff;
+$body-color: #34495E;
+$font-family-sans-serif: 'Poppins', sans-serif;
+$border-radius: 0.5rem;
+$border-radius-sm: 0.3rem;
+$border-radius-lg: 0.8rem;
+$box-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+$box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+$box-shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12);
+$link-decoration: none;
+$transition-base: 0.3s ease;
+
+
+/*==================================================
+= 3. IMPOR BOOTSTRAP SCSS =
+==================================================*/
+
+@import 'bootstrap/scss/bootstrap';
+
+
+/*==================================================
+= 4. STYLING KUSTOM APLIKASI =
+==================================================*/
+
+/* --- Base & Tipografi --- */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  font-weight: 600;
+}
+
+/* --- Navbar --- */
+.navbar.fixed-top {
+  transition: background-color 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &.navbar-transparent {
+    background-color: transparent !important;
+    box-shadow: none;
+  }
+
+  &.scrolled {
+    background-color: #353839 !important;
+    box-shadow: $box-shadow-sm;
+  }
+
+  .navbar-brand,
+  .nav-link {
+    color: #50C878  !important;
+  }
+
+  .nav-link {
+    border-radius: $border-radius-sm;
+    margin: 0 0.25rem;
+    padding: 0.5rem 1rem;
+    transition: background-color $transition-base;
+
+    &:hover,
+    &.active {
+      background-color: #ADEBB3;
+    }
+  }
+}
+
+.navbar.fixed-top.scrolled {
+
+  .navbar-brand,
+  .nav-link {
+    color: #ffffff !important;
+    text-shadow: none;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff !important;
+  }
+}
+
+.navbar .dropdown-menu {
+  margin-top: 0.75rem;
+  box-shadow: $box-shadow;
+  border: none;
+  background-color: #fff !important;
+  color: #000 !important;
+  z-index: 9999;
+}
+
+/* Mencegah konten tertutup oleh navbar */
+.main-content-padded {
+  padding-top: 80px;
+}
+
+.home-page .main-content-padded {
+  padding-top: 0;
+}
+
+/* --- Notifikasi Navbar --- */
+// Style untuk notifikasi di dropdown
+.notification-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #0d6efd; // Warna biru Bootstrap
+  border-radius: 50%;
+  flex-shrink: 0; // Mencegah titiknya mengecil
+}
+
+.notification-dot-placeholder {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+// Gaya untuk notifikasi yang sudah dibaca
+.dropdown-item.read-notification {
+  opacity: 0.7; // Membuatnya sedikit pudar
+
+  .fw-bold {
+    font-weight: normal !important; // Membuat judul tidak tebal
+  }
+}
+
+// (Opsional) Beri highlight untuk notifikasi yang belum dibaca
+.dropdown-item.unread-notification {
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba($secondary, 0.6);
+  }
+
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 8px rgba($secondary, 0);
+  }
+}
+
+/* --- WhatsApp FAB --- */
+.whatsapp-fab {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25D366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1030;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* --- WhatsApp Chatbox --- */
+.whatsapp-chatbox {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  max-width: 90%;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1029;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+  transition: all 0.4s ease;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .chatbox-header {
+    background: #075E54;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chatbox-close {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .chatbox-content {
+    padding: 20px;
+    background-color: #E5DDD5;
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+    flex-grow: 1;
+  }
+
+  .chat-bubble {
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 85%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  }
+
+  .chatbox-footer {
+    padding: 15px;
+    background: #f0f0f0;
+  }
+
+  .chatbox-send-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #128C7E;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: #075E54;
+    }
+  }
+}
+
+/* --- Hero Carousel --- */
+.hero-carousel {
+  height: 95vh;
+  min-height: 700px;
+  background-color: #333;
+
+  .carousel-item {
+    height: 100vh;
+    position: relative;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+    }
+  }
+
+  .carousel-caption {
+    bottom: 20%;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    h1 {
+      font-size: 4rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .carousel-indicators-wrapper {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .carousel-indicators [data-bs-target] {
+    width: 30px;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    border: 0;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .carousel-indicators .active {
+    background-color: #fff;
+  }
+}
+
+.service-box {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 0.5rem;
+  text-align: center;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.service-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+  border-color: #0d6efd;
+  /* Border biru saat di-hover */
+}
+
+.service-box .icon {
+  font-size: 3rem;
+  color: #0d6efd;
+  /* Ikon berwarna biru primer */
+  margin-bottom: 25px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.service-box:hover .icon {
+  transform: scale(1.1);
+}
+
+.service-box h5 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.service-box p {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.orders-page-header {
+  position: relative;
+  padding: 1rem 0;
+  background: #FFF;
+  text-align: center;
+  color: #fff;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  /* Penting untuk pseudo-element */
+}
+
+.form-step {
+  margin-bottom: 3rem;
+}
+
+.choice-card {
+  border: 2px solid #e9ecef;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choice-card:hover {
+  border-color: #0d6efd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.choice-card.selected {
+  border-color: #0d6efd;
+  background-color: #e7f1ff;
+}
+
+.choice-card img {
+  max-height: 120px;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+
+.form-control-lg {
+  font-size: 1.25 rem;
+  text-align: left;
+}
+
+/* ======================================================== */
+/*                  STYLING UNTUK CTA & FAQ                 */
+/* ======================================================== */
+
+.cta-section {
+  background-color: $primary;
+  color: #fff;
+
+  .section-title,
+  .lead {
+    color: #fff;
+  }
+}
+
+/* Kustomisasi Accordion */
+.accordion {
+  --bs-accordion-border-radius: 0.5rem;
+  --bs-accordion-inner-border-radius: 0.5rem;
+  --bs-accordion-border-color: rgba(0, 0, 0, 0.1);
+  --bs-accordion-bg: #fff;
+  --bs-accordion-color: #{$primary};
+}
+
+.accordion-item {
+  margin-bottom: 1rem;
+  border-radius: var(--bs-accordion-border-radius)
+}
+
+.accordion-button {
+  font-weight: 600;
+  text-align: left !important;
+
+  &:not(.collapsed) {
+    color: #fff;
+    background-color: $primary;
+    box-shadow: none;
+  }
+}
+
+.accordion-button:not(.collapsed)::after {
+  /* Mengubah warna ikon panah saat terbuka */
+  filter: brightness(0) invert(1);
+}
+
+.accordion-body {
+  color: $muted;
+  text-align: left;
+}
+
+.orders-page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Overlay gelap */
+  z-index: 1;
+}
+
+.orders-page-header .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Styling kartu dengan efek glassmorphism */
+.card-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  /* Tambah kontras teks */
+}
+
+/* Styling tabel di dalam kartu glass */
+.card-glass .table {
+  color: #1a1919;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Biar teks abu-abu tetap terlihat */
+.card-glass .text-muted {
+  color: #6c757d !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+
+/* --- Komponen Kustom: Footer --- */
+.site-footer {
+  background-color: #353839;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 60px 0;
+  font-size: 0.9rem;
+
+  h5 {
+    color: #fff; // Judul di footer menjadi putih solid
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.7); // Warna link
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #fff; // Warna link saat di-hover
+    }
+  }
+
+  .social-icons a {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: #0d6efd; // Warna primer saat di-hover
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 40px;
+    font-size: 0.8rem;
+  }
+}
+
+label.btn.active {
+  background-color: #9c9fa2;
+  color: #fff;
+  border-color: #e9ecef;
+}
+
+.price-hero {
+  padding: 4rem 0;
+  text-align: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.pricing-box {
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 0.75rem;
+}
+
+.pricing-box .price {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.pricing-box .list-group-item {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.pricing-box .list-group-item i {
+  font-size: 1.2rem;
+  color: var(--bs-success);
+}
+
+/* ====================== STEP CAROUSEL ====================== */
+.steps-carousel-container {
+  position: relative;
+  padding: 0 50px;
+}
+
+/* Stepper di atas */
+.steps-progress-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.step-indicator {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #f1f3f5;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.4s ease;
+}
+
+.step-indicator.active {
+  background-color: var(--bs-secondary);
+  color: #fff;
+  transform: scale(1.15);
+}
+
+/* Gaya untuk ikon tengah */
+.step-icon-wrapper {
+  width: 200px;
+  height: 200px;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.step-icon-wrapper i {
+  font-size: 90px;
+  color: var(--bs-primary);
+}
+
+/* Konten langkah */
+.step-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Progress bar bawah */
+.progress-container {
+  width: 100%;
+  max-width: 600px;
+  height: 10px;
+  background-color: #e9ecef;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 30px auto;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--bs-secondary);
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Tombol navigasi */
+.custom-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: #adb5bd;
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+
+.custom-carousel-control:hover {
+  color: var(--bs-secondary);
+}
+
+.custom-carousel-control#stepsCarouselPrev {
+  left: 0;
+}
+
+.custom-carousel-control#stepsCarouselNext {
+  right: 0;
+}
+
+/* Sembunyikan navigasi default Bootstrap */
+#stepsCarousel .carousel-indicators,
+#stepsCarousel .carousel-control-prev,
+#stepsCarousel .carousel-control-next {
+  display: none;
+}
+
+/* ======================================================== */
+/*          STYLING FORM PEMESANAN (GAYA MATERIAL)          */
+/* ======================================================== */
+
+.material-form .form-label {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Base style untuk input & select */
+.material-form .form-control-lg,
+.material-form .form-select-lg {
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid #ced4da !important;
+  /* Garis bawah abu-abu */
+  border-radius: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-shadow: none !important;
+  transition: border-color 0.3s ease;
+}
+
+/* Hilangkan panah default pada select */
+.material-form .form-select-lg {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 16px 12px;
+}
+
+/* Efek focus */
+.material-form .form-control-lg:focus,
+.material-form .form-select-lg:focus {
+  border-bottom-color: var(--bs-primary) !important;
+  /* Garis bawah menjadi biru saat fokus */
+}
+
+/* Styling untuk radio button yang terlihat seperti tombol */
+.material-form .btn-group-radio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.material-form .btn-group-radio .btn-outline-primary {
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-width: 2px;
+  border-radius: 0.75rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  border-color: #ced4da;
+  color: #bbbbbb;
+}
+
+.material-form .btn-group-radio .btn-check:checked+.btn-outline-primary {
+  background-color: var(--bs-primary);
+  color: #fff;
+  border-color: var(--bs-primary);
+  box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+.material-form .btn-group-checkbox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.material-form .btn-group-checkbox .btn-outline-primary {
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-width: 2px;
+  border-radius: 0.75rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  border-color: #ced4da;
+  color: #bbbbbb;
+}
+
+.material-form .btn-group-checkbox .btn-outline-primary:hover {
+  background-color: var(--bs-primary);
+  color: #fff;
+  border-color: var(--bs-primary);
+  box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb), 0.35);
+}
+
+/* Saat checkbox aktif (dipilih) */
+.material-form .btn-group-checkbox .btn-check:checked+.btn-outline-primary {
+  background-color: var(--bs-primary);
+  color: #fff;
+  border-color: var(--bs-primary);
+  box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+/* Styling untuk pesan error validasi Bootstrap */
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  border-bottom-color: var(--bs-danger) !important;
+}
+
+.was-validated .form-select:invalid,
+.form-select.is-invalid {
+  border-bottom-color: var(--bs-danger) !important;
+}
+
+.material-form .material-input-group {
+  /* Hapus background dan border dari wrapper */
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+
+  /* Atur agar memiliki garis bawah seperti input lain */
+  border-bottom: 2px solid #ced4da !important;
+  border-radius: 0 !important;
+  transition: border-color 0.3s ease;
+}
+
+.material-form .material-input-group:focus-within {
+  /* Ubah warna garis bawah saat salah satu elemen di dalamnya fokus */
+  border-bottom-color: var(--bs-primary) !important;
+  box-shadow: none !important;
+}
+
+/* Styling untuk teks +62 */
+.material-form .material-input-group .input-group-text {
+  background-color: #e9ecef;
+  /* Warna abu-abu terang seperti di contoh */
+  border: none !important;
+  border-radius: 0.25rem !important;
+  /* Beri sedikit sudut */
+  font-weight: 500;
+  color: #495057;
+}
+
+/* Styling untuk input field di dalam group */
+.material-form .material-input-group .form-control {
+  /* Hapus semua border dan background dari input itu sendiri */
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding-left: 0.75rem !important;
+  /* Beri sedikit jarak dari +62 */
+}
+
+/* Styling untuk pesan error validasi */
+.was-validated .material-input-group:invalid,
+.material-input-group.is-invalid {
+  border-bottom-color: var(--bs-danger) !important;
+}
+
+.invalid-feedback {
+  text-align: left;
+  color: #ffc107 !important;
+  /* Warna kuning seperti di contoh */
+  font-weight: 500;
+}
+
+/* Tombol Submit */
+.btn.rounded-pill {
+  font-weight: 600;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid #e9ecef; // Gunakan variabel jika Anda punya, misal: $gray-200
+
+  .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+
+      &:last-child {
+          margin-bottom: 0;
+      }
+  }
+
+  .timeline-marker {
+      position: absolute;
+      left: -0.5rem;
+      top: 0.25rem;
+      width: 1rem;
+      height: 1rem;
+      background-color: #0d6efd; // Gunakan variabel jika Anda punya, misal: $primary
+      border-radius: 50%;
+      border: 2px solid #fff; // Gunakan variabel jika Anda punya, misal: $white
+  }
+}
+
+html,
+body.admin-layout {
+  height: 100%;
+}
+
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin-wrapper {
+  display: flex;
+  flex-grow: 1;
+}
+
+.admin-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background-color: color.adjust($primary, $lightness: -5%);
+  overflow-y: auto;
+
+  .nav-link {
+    color: #ced4da;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+
+    .bi {
+      margin-right: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    &.active,
+    &:hover {
+      color: #fff;
+      background-color: #343a40;
+    }
+  }
+}
+
+.admin-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* --- CSS RESPONSIVE UNTUK ADMIN PANEL --- */
+@media (max-width: 991.98px) {
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #1a1919;
+    transition: left 0.3s ease;
+    z-index: 1050;
+    padding: 2rem 1rem 1rem;
+
+    &.active {
+      left: 0;
+    }
+  }
+
+  .btn-close {
+    filter: invert(1); // Biar tombol "X" putih
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 1040;
+  }
+
+  .sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+/* --- Utilitas Background --- */
+main.main-content-with-bg {
+  background: none;
+  background-color: #F2F0EF;
+  /* abu gelap */
+  color: #f0f0f0;
+}
+
+/* --- Animasi Kustom: Tabel --- */
+.table-animated>tbody>tr {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@for $i from 1 through 15 {
+
+  // Tingkatkan jumlah jika tabel Anda panjang
+  .table-animated>tbody>tr:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.05}s;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

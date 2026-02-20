@@ -1,0 +1,301 @@
+<mxfile host="app.diagrams.net" modified="2026-02-06T02:00:00.000Z" agent="5.0" version="21.0.0" type="device">
+  <diagram id="use-case" name="Use Case Diagram">
+    <mxGraphModel dx="1434" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <mxCell id="system" value="Website Desain Interior - PT. Astha Tunggal Makmur" style="shape=umlFrame;whiteSpace=wrap;html=1;width=180;height=30;boundedLbl=1;verticalAlign=middle;align=center;spacingTop=-4;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="200" y="40" width="1200" height="1100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="actor_guest" value="Guest" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="40" y="150" width="40" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="actor_user" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="40" y="400" width="40" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="actor_admin" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="200" width="40" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="actor_owner" value="Owner" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="450" width="40" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="actor_arsitek" value="Arsitek" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="700" width="40" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="actor_midtrans" value="Midtrans" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="40" y="700" width="40" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_login" value="Login" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="260" y="80" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_register" value="Register" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="260" y="150" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_view_home" value="Melihat Beranda" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="260" y="220" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_view_portfolio" value="Melihat Portofolio" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="260" y="290" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_view_about" value="Melihat Tentang Kami" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="420" y="80" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_contact" value="Mengirim Kontak" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="420" y="150" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_dashboard_user" value="Melihat Dashboard" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="260" y="380" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_edit_profile" value="Mengedit Profil" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="260" y="450" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_create_order" value="Membuat Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="260" y="520" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_view_orders" value="Melihat Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="420" y="380" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_view_order_detail" value="Melihat Detail Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="420" y="450" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_make_payment" value="Melakukan Pembayaran" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="420" y="520" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_cancel_order" value="Membatalkan Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="580" y="380" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_give_feedback" value="Memberikan Feedback" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="580" y="450" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_notifications" value="Melihat Notifikasi" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="580" y="520" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_logout" value="Logout" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="260" y="590" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_fill_form" value="Mengisi Form Pemesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="420" y="590" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_midtrans_process" value="Proses Pembayaran Midtrans" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="260" y="700" width="150" height="55" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_view_progress" value="Melihat Progress Proyek" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="580" y="590" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_email_notif" value="Email Notifikasi" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="420" y="220" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_dashboard_admin" value="Melihat Dashboard Admin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="100" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_manage_orders" value="Mengelola Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="170" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_update_status" value="Mengubah Status Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="880" y="100" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_set_price" value="Menetapkan Harga Akhir" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="880" y="170" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_assign_team" value="Menugaskan Tim" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="880" y="240" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_manage_projects" value="Mengelola Portofolio" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="240" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_manage_categories" value="Mengelola Kategori" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="310" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_manage_team" value="Mengelola Anggota Tim" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="380" width="140" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_reports" value="Melihat Laporan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1260" y="100" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_risk" value="Melihat Analitik Risiko" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1260" y="170" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_manage_admins" value="Mengelola Admin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1260" y="450" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_performance" value="Melihat Performa Tim" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1260" y="520" width="130" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_assigned_orders" value="Melihat Pesanan Ditugaskan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="700" width="150" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="uc_update_progress" value="Mengupdate Progress" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a4d4d;strokeColor=#006666;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="770" width="150" height="50" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="line_g1" style="endArrow=none;html=1;" parent="1" source="actor_guest" target="uc_login" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_g2" style="endArrow=none;html=1;" parent="1" source="actor_guest" target="uc_register" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_g3" style="endArrow=none;html=1;" parent="1" source="actor_guest" target="uc_view_home" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_g4" style="endArrow=none;html=1;" parent="1" source="actor_guest" target="uc_view_portfolio" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_g5" style="endArrow=none;html=1;" parent="1" source="actor_guest" target="uc_view_about" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_g6" style="endArrow=none;html=1;" parent="1" source="actor_guest" target="uc_contact" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="line_u1" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_dashboard_user" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_u2" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_edit_profile" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_u3" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_create_order" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_u4" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_view_orders" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_u5" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_view_order_detail" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_u6" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_make_payment" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_u7" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_cancel_order" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_u8" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_give_feedback" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_u9" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_notifications" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_u10" style="endArrow=none;html=1;" parent="1" source="actor_user" target="uc_logout" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="line_a1" style="endArrow=none;html=1;" parent="1" source="actor_admin" target="uc_dashboard_admin" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_a2" style="endArrow=none;html=1;" parent="1" source="actor_admin" target="uc_manage_orders" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_a3" style="endArrow=none;html=1;" parent="1" source="actor_admin" target="uc_manage_projects" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_a4" style="endArrow=none;html=1;" parent="1" source="actor_admin" target="uc_manage_categories" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_a5" style="endArrow=none;html=1;" parent="1" source="actor_admin" target="uc_manage_team" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_a6" style="endArrow=none;html=1;" parent="1" source="actor_admin" target="uc_reports" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_a7" style="endArrow=none;html=1;" parent="1" source="actor_admin" target="uc_risk" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="line_o1" style="endArrow=none;html=1;" parent="1" source="actor_owner" target="uc_manage_admins" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_o2" style="endArrow=none;html=1;" parent="1" source="actor_owner" target="uc_performance" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="line_ar1" style="endArrow=none;html=1;" parent="1" source="actor_arsitek" target="uc_assigned_orders" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="line_ar2" style="endArrow=none;html=1;" parent="1" source="actor_arsitek" target="uc_update_progress" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="line_m1" style="endArrow=none;html=1;" parent="1" source="actor_midtrans" target="uc_midtrans_process" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="inc_1" value="include" style="endArrow=open;endSize=12;dashed=1;html=1;" parent="1" source="uc_create_order" target="uc_fill_form" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="inc_2" value="include" style="endArrow=open;endSize=12;dashed=1;html=1;" parent="1" source="uc_make_payment" target="uc_midtrans_process" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="inc_3" value="include" style="endArrow=open;endSize=12;dashed=1;html=1;" parent="1" source="uc_view_order_detail" target="uc_view_progress" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="inc_4" value="include" style="endArrow=open;endSize=12;dashed=1;html=1;" parent="1" source="uc_manage_orders" target="uc_update_status" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="inc_5" value="include" style="endArrow=open;endSize=12;dashed=1;html=1;" parent="1" source="uc_manage_orders" target="uc_set_price" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="inc_6" value="include" style="endArrow=open;endSize=12;dashed=1;html=1;" parent="1" source="uc_manage_orders" target="uc_assign_team" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ext_1" value="extend" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#d79b00;" parent="1" source="uc_email_notif" target="uc_login" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ext_2" value="extend" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#d79b00;" parent="1" source="uc_email_notif" target="uc_create_order" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="gen_1" style="endArrow=block;endSize=16;endFill=0;html=1;" parent="1" source="actor_owner" target="actor_admin" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

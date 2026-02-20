@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.0" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
+  <xmi:Documentation exporter="Desain Interior Web Use Case" exporterVersion="1.0"/>
+  
+  <uml:Model xmi:type="uml:Model" xmi:id="model_desain_interior" name="Use Case Diagram - PT. Astha Tunggal Makmur">
+    
+    <!-- ==================== ACTORS ==================== -->
+    <packagedElement xmi:type="uml:Actor" xmi:id="actor_guest" name="Guest (Pengunjung)"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="actor_user" name="User (Pelanggan)"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="actor_admin" name="Admin"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="actor_owner" name="Owner"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="actor_arsitek" name="Arsitek"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="actor_midtrans" name="Midtrans Payment Gateway"/>
+    
+    <!-- ==================== USE CASES - GUEST ==================== -->
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_home" name="Melihat Halaman Beranda"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_portfolio" name="Melihat Portofolio Proyek"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_about" name="Melihat Tentang Kami"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_price" name="Melihat Daftar Harga"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_contact" name="Mengirim Pesan Kontak"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_register" name="Registrasi Akun"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_login" name="Login"/>
+    
+    <!-- ==================== USE CASES - USER (PELANGGAN) ==================== -->
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_logout" name="Logout"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_edit_profile" name="Mengedit Profil"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_upload_photo" name="Mengupload Foto Profil"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_change_password" name="Mengubah Password"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_dashboard_user" name="Melihat Dashboard Saya"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_create_order" name="Membuat Pesanan Baru"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_fill_order_form" name="Mengisi Form Pemesanan"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_orders" name="Melihat Daftar Pesanan"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_order_detail" name="Melihat Detail Pesanan"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_order_progress" name="Melihat Progress Proyek"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_cancel_order" name="Membatalkan Pesanan"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_make_payment" name="Melakukan Pembayaran"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_process_midtrans" name="Proses Pembayaran Midtrans"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_payment_status" name="Melihat Status Pembayaran"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_give_feedback" name="Memberikan Feedback/Ulasan"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_notifications" name="Melihat Notifikasi"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_email_notification" name="Menerima Email Notifikasi"/>
+    
+    <!-- ==================== USE CASES - ADMIN/OWNER ==================== -->
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_dashboard_admin" name="Melihat Dashboard Admin"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_statistics" name="Melihat Statistik"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_manage_orders" name="Mengelola Pesanan"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_update_order_status" name="Mengubah Status Pesanan"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_set_final_price" name="Menetapkan Harga Akhir"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_assign_team" name="Menugaskan Tim"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_upload_progress_photos" name="Mengupload Foto Progress"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_manage_projects" name="Mengelola Proyek Portofolio"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_add_project" name="Menambah Proyek"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_edit_project" name="Mengedit Proyek"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_delete_project" name="Menghapus Proyek"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_manage_categories" name="Mengelola Kategori"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_manage_team" name="Mengelola Anggota Tim"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_reports" name="Melihat Laporan"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_risk_analytics" name="Melihat Analitik Risiko"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_team_performance" name="Melihat Performa Tim"/>
+    
+    <!-- ==================== USE CASES - OWNER ONLY ==================== -->
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_manage_admins" name="Mengelola Admin"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_add_admin" name="Menambah Admin"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_delete_admin" name="Menghapus Admin"/>
+    
+    <!-- ==================== USE CASES - ARSITEK ==================== -->
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_view_assigned_orders" name="Melihat Pesanan yang Ditugaskan"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="uc_update_progress" name="Mengupdate Progress Proyek"/>
+    
+    <!-- ==================== ASSOCIATIONS - GUEST ==================== -->
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_1">
+      <memberEnd xmi:idref="actor_guest"/>
+      <memberEnd xmi:idref="uc_view_home"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_2">
+      <memberEnd xmi:idref="actor_guest"/>
+      <memberEnd xmi:idref="uc_view_portfolio"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_3">
+      <memberEnd xmi:idref="actor_guest"/>
+      <memberEnd xmi:idref="uc_view_about"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_4">
+      <memberEnd xmi:idref="actor_guest"/>
+      <memberEnd xmi:idref="uc_view_price"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_5">
+      <memberEnd xmi:idref="actor_guest"/>
+      <memberEnd xmi:idref="uc_contact"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_6">
+      <memberEnd xmi:idref="actor_guest"/>
+      <memberEnd xmi:idref="uc_register"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_7">
+      <memberEnd xmi:idref="actor_guest"/>
+      <memberEnd xmi:idref="uc_login"/>
+    </packagedElement>
+    
+    <!-- ==================== ASSOCIATIONS - USER ==================== -->
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u1">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_login"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u2">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_logout"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u3">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_edit_profile"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u4">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_view_dashboard_user"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u5">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_create_order"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u6">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_view_orders"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u7">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_view_order_detail"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u8">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_cancel_order"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u9">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_make_payment"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u10">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_give_feedback"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_u11">
+      <memberEnd xmi:idref="actor_user"/>
+      <memberEnd xmi:idref="uc_view_notifications"/>
+    </packagedElement>
+    
+    <!-- ==================== ASSOCIATIONS - ADMIN ==================== -->
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_a1">
+      <memberEnd xmi:idref="actor_admin"/>
+      <memberEnd xmi:idref="uc_login"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_a2">
+      <memberEnd xmi:idref="actor_admin"/>
+      <memberEnd xmi:idref="uc_view_dashboard_admin"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_a3">
+      <memberEnd xmi:idref="actor_admin"/>
+      <memberEnd xmi:idref="uc_manage_orders"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_a4">
+      <memberEnd xmi:idref="actor_admin"/>
+      <memberEnd xmi:idref="uc_manage_projects"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_a5">
+      <memberEnd xmi:idref="actor_admin"/>
+      <memberEnd xmi:idref="uc_manage_categories"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_a6">
+      <memberEnd xmi:idref="actor_admin"/>
+      <memberEnd xmi:idref="uc_manage_team"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_a7">
+      <memberEnd xmi:idref="actor_admin"/>
+      <memberEnd xmi:idref="uc_view_reports"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_a8">
+      <memberEnd xmi:idref="actor_admin"/>
+      <memberEnd xmi:idref="uc_view_risk_analytics"/>
+    </packagedElement>
+    
+    <!-- ==================== ASSOCIATIONS - OWNER ==================== -->
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_o1">
+      <memberEnd xmi:idref="actor_owner"/>
+      <memberEnd xmi:idref="uc_manage_admins"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_o2">
+      <memberEnd xmi:idref="actor_owner"/>
+      <memberEnd xmi:idref="uc_view_team_performance"/>
+    </packagedElement>
+    
+    <!-- ==================== ASSOCIATIONS - ARSITEK ==================== -->
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_ar1">
+      <memberEnd xmi:idref="actor_arsitek"/>
+      <memberEnd xmi:idref="uc_view_assigned_orders"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_ar2">
+      <memberEnd xmi:idref="actor_arsitek"/>
+      <memberEnd xmi:idref="uc_update_progress"/>
+    </packagedElement>
+    
+    <!-- ==================== ASSOCIATIONS - MIDTRANS ==================== -->
+    <packagedElement xmi:type="uml:Association" xmi:id="assoc_m1">
+      <memberEnd xmi:idref="actor_midtrans"/>
+      <memberEnd xmi:idref="uc_process_midtrans"/>
+    </packagedElement>
+    
+    <!-- ==================== INCLUDE RELATIONSHIPS ==================== -->
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_1">
+      <addition xmi:idref="uc_fill_order_form"/>
+      <includingCase xmi:idref="uc_create_order"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_2">
+      <addition xmi:idref="uc_process_midtrans"/>
+      <includingCase xmi:idref="uc_make_payment"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_3">
+      <addition xmi:idref="uc_view_order_progress"/>
+      <includingCase xmi:idref="uc_view_order_detail"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_4">
+      <addition xmi:idref="uc_view_payment_status"/>
+      <includingCase xmi:idref="uc_view_order_detail"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_5">
+      <addition xmi:idref="uc_upload_photo"/>
+      <includingCase xmi:idref="uc_edit_profile"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_6">
+      <addition xmi:idref="uc_change_password"/>
+      <includingCase xmi:idref="uc_edit_profile"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_7">
+      <addition xmi:idref="uc_update_order_status"/>
+      <includingCase xmi:idref="uc_manage_orders"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_8">
+      <addition xmi:idref="uc_set_final_price"/>
+      <includingCase xmi:idref="uc_manage_orders"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_9">
+      <addition xmi:idref="uc_assign_team"/>
+      <includingCase xmi:idref="uc_manage_orders"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_10">
+      <addition xmi:idref="uc_upload_progress_photos"/>
+      <includingCase xmi:idref="uc_manage_orders"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_11">
+      <addition xmi:idref="uc_add_project"/>
+      <includingCase xmi:idref="uc_manage_projects"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_12">
+      <addition xmi:idref="uc_edit_project"/>
+      <includingCase xmi:idref="uc_manage_projects"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_13">
+      <addition xmi:idref="uc_delete_project"/>
+      <includingCase xmi:idref="uc_manage_projects"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_14">
+      <addition xmi:idref="uc_add_admin"/>
+      <includingCase xmi:idref="uc_manage_admins"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_15">
+      <addition xmi:idref="uc_delete_admin"/>
+      <includingCase xmi:idref="uc_manage_admins"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Include" xmi:id="inc_16">
+      <addition xmi:idref="uc_view_statistics"/>
+      <includingCase xmi:idref="uc_view_dashboard_admin"/>
+    </packagedElement>
+    
+    <!-- ==================== EXTEND RELATIONSHIPS ==================== -->
+    <packagedElement xmi:type="uml:Extend" xmi:id="ext_1">
+      <extendedCase xmi:idref="uc_login"/>
+      <extension xmi:idref="uc_email_notification"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extend" xmi:id="ext_2">
+      <extendedCase xmi:idref="uc_create_order"/>
+      <extension xmi:idref="uc_email_notification"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extend" xmi:id="ext_3">
+      <extendedCase xmi:idref="uc_make_payment"/>
+      <extension xmi:idref="uc_email_notification"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extend" xmi:id="ext_4">
+      <extendedCase xmi:idref="uc_update_order_status"/>
+      <extension xmi:idref="uc_email_notification"/>
+    </packagedElement>
+    
+    <!-- ==================== GENERALIZATION (INHERITANCE) ==================== -->
+    <!-- Owner inherits all Admin capabilities -->
+    <packagedElement xmi:type="uml:Generalization" xmi:id="gen_1">
+      <general xmi:idref="actor_admin"/>
+      <specific xmi:idref="actor_owner"/>
+    </packagedElement>
+    <!-- User inherits Guest capabilities -->
+    <packagedElement xmi:type="uml:Generalization" xmi:id="gen_2">
+      <general xmi:idref="actor_guest"/>
+      <specific xmi:idref="actor_user"/>
+    </packagedElement>
+    
+  </uml:Model>
+</xmi:XMI>

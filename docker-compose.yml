@@ -1,0 +1,68 @@
+services:
+  # MySQL Database (mysql:8.0 support ARM64/Apple Silicon)
+  db:
+    image: mysql:8.0
+    platform: linux/amd64
+    container_name: desaininterior_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: desaininterior
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql/desaininterior.sql:/docker-entrypoint-initdb.d/desaininterior.sql:ro
+    networks:
+      - desaininterior_network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # PHP Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: desaininterior_app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/vendor
+      - /var/www/html/node_modules
+    networks:
+      - desaininterior_network
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+
+  # Nginx Web Server
+  nginx:
+    image: nginx:alpine
+    container_name: desaininterior_nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - desaininterior_network
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  desaininterior_network:
+    driver: bridge

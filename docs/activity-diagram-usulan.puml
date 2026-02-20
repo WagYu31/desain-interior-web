@@ -1,0 +1,86 @@
+@startuml
+title Activity Diagram Usulan\nSistem Website Desain Interior - PT. Astha Tunggal Makmur
+
+|User|
+start
+:Membuka website\nPT. Astha Tunggal Makmur;
+
+repeat
+  :Login & Registrasi;
+  |Sistem|
+  backward :Tampilkan pesan kesalahan;
+repeat while (Berhasil?) is (Tidak) not (Iya)
+
+:Menampilkan halaman utama;
+
+|User|
+:Memilih Layanan Kami;
+
+|Sistem|
+:Menampilkan halaman\nyang dipilih;
+
+|User|
+repeat
+  :Mengisi form pemesanan;
+  |Sistem|
+  backward :Tampilkan pesan untuk\nlengkapi data;
+repeat while (Data pemesanan\nLengkap?) is (Tidak) not (Iya)
+
+|User|
+:Kirim permintaan ke Admin;
+
+|Sistem|
+:Kirim notifikasi ke Admin;
+
+|Admin / Arsitek / Owner|
+:Admin: Menerima pesanan baru;
+:Admin: Assign Arsitek ke pesanan;
+:Arsitek: Mengerjakan desain interior;
+:Arsitek: Upload foto progress;
+:Admin: Review progress;
+:Admin/Owner: Update status pesanan;
+
+if (Ada perubahan\nprogress?) then (Iya)
+  :Status berubah;
+else (Tidak)
+  :Tetap pada status terakhir;
+endif
+
+|Sistem|
+:Kirim notifikasi ke User;
+:Tampil status ke user;
+
+|User|
+:Melihat riwayat pemesanan\n& progress pesanan;
+:Proses Pembayaran Midtrans;
+
+|Sistem|
+:Verifikasi pembayaran;
+:Update status pembayaran;
+
+|User|
+:Kirim Feedback;
+
+|Admin / Arsitek / Owner|
+note right
+  **Fitur Tambahan per Role:**
+  ----
+  **Admin:** Kategori Proyek, Proyek,
+  Manajemen Team, Pemesanan,
+  Data User, Analisis Resiko,
+  Team Performance, Email Masuk,
+  Pengaturan Web Profil
+  ----
+  **Arsitek:** Proyek, Pemesanan,
+  Pengaturan Web Profil
+  ----
+  **Owner:** Semua fitur Admin +
+  Manajemen Admin,
+  Laporan & Export Laporan
+end note
+
+|Sistem|
+:Logout;
+
+stop
+@enduml

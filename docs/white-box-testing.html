@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tabel Pengujian White Box</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            padding: 40px;
+            font-size: 12pt;
+        }
+
+        h3 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        h4 {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px auto;
+            font-size: 11pt;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 8px 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        td:nth-child(4) {
+            font-family: 'Courier New', monospace;
+            font-size: 10pt;
+            text-align: left;
+        }
+
+        .section-header {
+            background-color: #d9e2f3;
+            font-weight: bold;
+            text-align: left;
+            font-size: 11pt;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Tabel 4.14</h3>
+    <h4>Skenario Pengujian <i>White Box (Unit Testing)</i></h4>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 8%;">ID</th>
+                <th style="width: 17%;">Unit/Fungsi yang Diuji</th>
+                <th style="width: 22%;">Jalur Logika (Branch/Path)</th>
+                <th style="width: 28%;">Data Uji (Contoh)</th>
+                <th style="width: 25%;">Output yang Diharapkan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ==================== AUTENTIKASI ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">A. Modul Autentikasi</td>
+            </tr>
+            <tr>
+                <td>WB-01</td>
+                <td><u>login()</u></td>
+                <td>Identifier atau password kosong</td>
+                <td>{ email:"", password:"" }</td>
+                <td>422<br>Validation Error — field email &amp; password required</td>
+            </tr>
+            <tr>
+                <td>WB-02</td>
+                <td><u>login()</u></td>
+                <td>Email atau password salah (credential tidak valid)</td>
+                <td>{ email:"wrong@mail.com", password:"salah123" }</td>
+                <td>422<br>"These credentials do not match our records"</td>
+            </tr>
+            <tr>
+                <td>WB-03</td>
+                <td><u>login()</u></td>
+                <td>Login berhasil sebagai admin/owner/arsitek</td>
+                <td>{ email:"admin@mail.com", password:"Password1!" }</td>
+                <td>302<br>Redirect ke admin.dashboard</td>
+            </tr>
+            <tr>
+                <td>WB-04</td>
+                <td><u>login()</u></td>
+                <td>Login berhasil sebagai user biasa</td>
+                <td>{ email:"user@mail.com", password:"Password1!" }</td>
+                <td>302<br>Redirect ke user.dashboard</td>
+            </tr>
+            <tr>
+                <td>WB-05</td>
+                <td><u>logout()</u></td>
+                <td>User melakukan logout</td>
+                <td>Session aktif</td>
+                <td>302<br>Session invalidated, redirect ke /</td>
+            </tr>
+            <tr>
+                <td>WB-06</td>
+                <td><u>register()</u></td>
+                <td>Semua field kosong</td>
+                <td>{ name:"", email:"", phone:"", password:"" }</td>
+                <td>422<br>Validation Error — semua field required</td>
+            </tr>
+            <tr>
+                <td>WB-07</td>
+                <td><u>register()</u></td>
+                <td>Email sudah terdaftar (duplikat)</td>
+                <td>{ name:"Test", email:"existing@mail.com", phone:"081234567890", password:"Pass1!abc",
+                    password_confirmation:"Pass1!abc" }</td>
+                <td>422<br>"The email has already been taken"</td>
+            </tr>
+            <tr>
+                <td>WB-08</td>
+                <td><u>register()</u></td>
+                <td>Password tidak memenuhi complexity (tanpa simbol)</td>
+                <td>{ name:"Test", email:"new@mail.com", phone:"081234567890", password:"Password1",
+                    password_confirmation:"Password1" }</td>
+                <td>422<br>"The password must contain at least one symbol"</td>
+            </tr>
+            <tr>
+                <td>WB-09</td>
+                <td><u>register()</u></td>
+                <td>Password confirmation tidak cocok</td>
+                <td>{ name:"Test", email:"new@mail.com", phone:"081234567890", password:"Pass1!abc",
+                    password_confirmation:"Beda1!abc" }</td>
+                <td>422<br>"The password confirmation does not match"</td>
+            </tr>
+            <tr>
+                <td>WB-10</td>
+                <td><u>register()</u></td>
+                <td>Registrasi berhasil, nomor HP diawali 0 → diubah ke 62</td>
+                <td>{ name:"Test User", email:"new@mail.com", phone:"081234567890", password:"Pass1!abc",
+                    password_confirmation:"Pass1!abc" }</td>
+                <td>201<br>User dibuat, phone = 6281234567890, role User di-assign, redirect ke user.dashboard</td>
+            </tr>
+            <tr>
+                <td>WB-11</td>
+                <td><u>register()</u></td>
+                <td>Role 'User' tidak ditemukan di database</td>
+                <td>Data valid, tabel roles kosong</td>
+                <td>User tetap dibuat, error di-log: "Role 'User' not found"</td>
+            </tr>
+            <tr>
+                <td>WB-12</td>
+                <td><u>forgotPassword()</u></td>
+                <td>Email kosong</td>
+                <td>{ email:"" }</td>
+                <td>422<br>Validation Error — email required</td>
+            </tr>
+            <tr>
+                <td>WB-13</td>
+                <td><u>forgotPassword()</u></td>
+                <td>Email valid terdaftar, link terkirim</td>
+                <td>{ email:"user@mail.com" }</td>
+                <td>302<br>Redirect back with status "passwords.sent"</td>
+            </tr>
+            <tr>
+                <td>WB-14</td>
+                <td><u>resetPassword()</u></td>
+                <td>Token tidak valid / expired</td>
+                <td>{ token:"invalid-token", email:"user@mail.com", password:"NewPass1!",
+                    password_confirmation:"NewPass1!" }</td>
+                <td>302<br>Redirect back — "This password reset token is invalid"</td>
+            </tr>
+            <tr>
+                <td>WB-15</td>
+                <td><u>resetPassword()</u></td>
+                <td>Reset berhasil dengan token valid</td>
+                <td>{ token:"valid-token", email:"user@mail.com", password:"NewPass1!",
+                    password_confirmation:"NewPass1!" }</td>
+                <td>302<br>Redirect ke route login dengan status success</td>
+            </tr>
+
+            <!-- ==================== PROFIL ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">B. Modul Profil</td>
+            </tr>
+            <tr>
+                <td>WB-16</td>
+                <td><u>updateProfile()</u></td>
+                <td>Email diubah (isDirty)</td>
+                <td>{ name:"Updated", email:"newemail@mail.com" }</td>
+                <td>302<br>email_verified_at di-set null, profil tersimpan</td>
+            </tr>
+            <tr>
+                <td>WB-17</td>
+                <td><u>updateProfile()</u></td>
+                <td>Nama diubah, email tetap</td>
+                <td>{ name:"New Name", email:"same@mail.com" }</td>
+                <td>302<br>Profil diupdate, email_verified_at tetap</td>
+            </tr>
+            <tr>
+                <td>WB-18</td>
+                <td><u>updatePhoto()</u></td>
+                <td>File bukan gambar (PDF)</td>
+                <td>{ profile_photo: file.pdf }</td>
+                <td>422<br>"The profile photo must be an image"</td>
+            </tr>
+            <tr>
+                <td>WB-19</td>
+                <td><u>updatePhoto()</u></td>
+                <td>Upload foto valid, foto lama ada → dihapus</td>
+                <td>{ profile_photo: valid.jpg } (user sudah punya foto)</td>
+                <td>302<br>Foto lama dihapus, foto baru tersimpan</td>
+            </tr>
+            <tr>
+                <td>WB-20</td>
+                <td><u>updatePhoto()</u></td>
+                <td>Upload foto valid, tidak ada foto lama</td>
+                <td>{ profile_photo: valid.jpg } (user belum punya foto)</td>
+                <td>302<br>Foto baru tersimpan</td>
+            </tr>
+            <tr>
+                <td>WB-21</td>
+                <td><u>deleteAccount()</u></td>
+                <td>Password salah</td>
+                <td>{ password:"salahpassword" }</td>
+                <td>422<br>"The password is incorrect"</td>
+            </tr>
+            <tr>
+                <td>WB-22</td>
+                <td><u>deleteAccount()</u></td>
+                <td>Password benar, user memiliki foto profil</td>
+                <td>{ password:"correctpassword" }</td>
+                <td>302<br>Foto dihapus, user dihapus, session invalidated, redirect /</td>
+            </tr>
+
+            <!-- ==================== ORDER USER ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">C. Modul Order (User)</td>
+            </tr>
+            <tr>
+                <td>WB-23</td>
+                <td><u>createOrder()</u></td>
+                <td>Field wajib kosong</td>
+                <td>{ client_type:"", property_type:"", name:"", phone:"", province:"", city:"", district:"", address:""
+                    }</td>
+                <td>422<br>Validation Error — semua field wajib required</td>
+            </tr>
+            <tr>
+                <td>WB-24</td>
+                <td><u>createOrder()</u></td>
+                <td>client_type tidak valid (bukan Residensial / Bisnis)</td>
+                <td>{ client_type:"Invalid", ... }</td>
+                <td>422<br>"The selected client type is invalid"</td>
+            </tr>
+            <tr>
+                <td>WB-25</td>
+                <td><u>createOrder()</u></td>
+                <td>Order berhasil — tipe Residensial, dengan design_type &amp; notes</td>
+                <td>{ client_type:"Residensial", property_type:"Rumah", name:"John", phone:"081234567890",
+                    province:"Sumut", city:"Medan", district:"Medan Kota", address:"Jl. Test", design_type:["Modern"],
+                    notes:"Catatan" }</td>
+                <td>200 JSON<br>{ success:true, whatsapp_url:"..." }, Order &amp; OrderDetail tersimpan</td>
+            </tr>
+            <tr>
+                <td>WB-26</td>
+                <td><u>createOrder()</u></td>
+                <td>Order berhasil — tipe Bisnis, tanpa optional fields</td>
+                <td>{ client_type:"Bisnis", property_type:"Kantor", name:"Corp", phone:"081234567890", province:"Sumut",
+                    city:"Medan", district:"Medan Kota", address:"Jl. Office" }</td>
+                <td>200 JSON<br>{ success:true }, field opsional null</td>
+            </tr>
+            <tr>
+                <td>WB-27</td>
+                <td><u>cancelOrder()</u></td>
+                <td>Reason terlalu pendek (&lt;10 karakter)</td>
+                <td>{ cancellation_reason:"pendek" }</td>
+                <td>422<br>"The cancellation reason must be at least 10 characters"</td>
+            </tr>
+            <tr>
+                <td>WB-28</td>
+                <td><u>cancelOrder()</u></td>
+                <td>Pembatalan berhasil dengan alasan valid</td>
+                <td>{ cancellation_reason:"Saya ingin membatalkan pesanan ini" }</td>
+                <td>302<br>OrderDetail 'cancelled' dibuat, redirect ke index</td>
+            </tr>
+            <tr>
+                <td>WB-29</td>
+                <td><u>cancelOrder()</u></td>
+                <td>User mencoba membatalkan order milik orang lain</td>
+                <td>User ID ≠ Order user_id</td>
+                <td>403<br>Forbidden — Unauthorized</td>
+            </tr>
+
+            <!-- ==================== PEMBAYARAN ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">D. Modul Pembayaran (Midtrans)</td>
+            </tr>
+            <tr>
+                <td>WB-30</td>
+                <td><u>createPayment()</u></td>
+                <td>User bukan pemilik order</td>
+                <td>Order user_id ≠ Auth id</td>
+                <td>403<br>"Unauthorized"</td>
+            </tr>
+            <tr>
+                <td>WB-31</td>
+                <td><u>createPayment()</u></td>
+                <td>Sudah ada pending payment dengan snap_token</td>
+                <td>Order milik user, pending payment exists</td>
+                <td>200<br>View payment dengan snapToken dari payment lama</td>
+            </tr>
+            <tr>
+                <td>WB-32</td>
+                <td><u>createPayment()</u></td>
+                <td>Belum ada pending, transaksi Midtrans berhasil</td>
+                <td>Order milik user, tidak ada pending payment</td>
+                <td>200<br>View payment dengan snapToken baru</td>
+            </tr>
+            <tr>
+                <td>WB-33</td>
+                <td><u>createPayment()</u></td>
+                <td>Belum ada pending, transaksi Midtrans gagal</td>
+                <td>Midtrans return { success:false }</td>
+                <td>302<br>Redirect back — "Gagal membuat pembayaran"</td>
+            </tr>
+            <tr>
+                <td>WB-34</td>
+                <td><u>notification()</u></td>
+                <td>Signature key tidak valid</td>
+                <td>{ signature_key:"invalid_hash", order_id:"ORDER-1-xxx", status_code:"200", gross_amount:"500000" }
+                </td>
+                <td>403 JSON<br>{ message:"Invalid signature" }</td>
+            </tr>
+            <tr>
+                <td>WB-35</td>
+                <td><u>notification()</u></td>
+                <td>Signature key valid</td>
+                <td>Notification data dengan hash SHA512 valid</td>
+                <td>200 JSON<br>{ message:"OK" }</td>
+            </tr>
+            <tr>
+                <td>WB-36</td>
+                <td><u>finishPayment()</u></td>
+                <td>transaction_status = settlement</td>
+                <td>{ order_id:"ORDER-1-xxx", transaction_status:"settlement" }</td>
+                <td>302<br>Payment status → success, paid_at di-set</td>
+            </tr>
+            <tr>
+                <td>WB-37</td>
+                <td><u>finishPayment()</u></td>
+                <td>transaction_status = pending</td>
+                <td>{ order_id:"ORDER-1-xxx", transaction_status:"pending" }</td>
+                <td>302<br>Payment status → pending</td>
+            </tr>
+            <tr>
+                <td>WB-38</td>
+                <td><u>finishPayment()</u></td>
+                <td>transaction_status = deny / cancel / expire</td>
+                <td>{ order_id:"ORDER-1-xxx", transaction_status:"deny" }</td>
+                <td>302<br>Payment status → failed</td>
+            </tr>
+            <tr>
+                <td>WB-39</td>
+                <td><u>finishPayment()</u></td>
+                <td>order_id kosong / null</td>
+                <td>{ order_id: null }</td>
+                <td>302<br>Redirect ke user.dashboard</td>
+            </tr>
+
+            <!-- ==================== FEEDBACK ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">E. Modul Feedback</td>
+            </tr>
+            <tr>
+                <td>WB-40</td>
+                <td><u>storeFeedback()</u></td>
+                <td>User bukan pemilik order</td>
+                <td>Order user_id ≠ Auth id</td>
+                <td>403<br>"Unauthorized"</td>
+            </tr>
+            <tr>
+                <td>WB-41</td>
+                <td><u>storeFeedback()</u></td>
+                <td>Order belum berstatus completed</td>
+                <td>latestDetail.status ≠ completed</td>
+                <td>302<br>"Anda hanya bisa memberikan feedback untuk pesanan yang sudah selesai"</td>
+            </tr>
+            <tr>
+                <td>WB-42</td>
+                <td><u>storeFeedback()</u></td>
+                <td>Feedback sudah pernah diberikan</td>
+                <td>order→feedback exists</td>
+                <td>302<br>"Anda sudah memberikan feedback untuk pesanan ini"</td>
+            </tr>
+            <tr>
+                <td>WB-43</td>
+                <td><u>storeFeedback()</u></td>
+                <td>Rating tidak valid (0 atau 6)</td>
+                <td>{ rating:0, review:"Test" }</td>
+                <td>422<br>"The rating must be at least 1"</td>
+            </tr>
+            <tr>
+                <td>WB-44</td>
+                <td><u>storeFeedback()</u></td>
+                <td>Feedback berhasil disimpan</td>
+                <td>{ rating:5, review:"Sangat memuaskan", would_recommend:true }</td>
+                <td>302<br>"Terima kasih! Feedback Anda telah disimpan"</td>
+            </tr>
+
+            <!-- ==================== ADMIN KATEGORI ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">F. Modul Kategori (Admin)</td>
+            </tr>
+            <tr>
+                <td>WB-45</td>
+                <td><u>storeCategory()</u></td>
+                <td>Nama kosong</td>
+                <td>{ name:"" }</td>
+                <td>422<br>"The name field is required"</td>
+            </tr>
+            <tr>
+                <td>WB-46</td>
+                <td><u>storeCategory()</u></td>
+                <td>Nama duplikat</td>
+                <td>{ name:"Kategori Existing" }</td>
+                <td>422<br>"The name has already been taken"</td>
+            </tr>
+            <tr>
+                <td>WB-47</td>
+                <td><u>storeCategory()</u></td>
+                <td>Data valid, slug auto-generated</td>
+                <td>{ name:"Modern Minimalis", description:"Desain modern" }</td>
+                <td>302<br>Kategori tersimpan, slug = "modern-minimalis"</td>
+            </tr>
+            <tr>
+                <td>WB-48</td>
+                <td><u>updateCategory()</u></td>
+                <td>Nama diubah ke nama yang sudah ada</td>
+                <td>{ name:"Nama Kategori Lain" } (duplikat)</td>
+                <td>422<br>"The name has already been taken"</td>
+            </tr>
+            <tr>
+                <td>WB-49</td>
+                <td><u>updateCategory()</u></td>
+                <td>Nama tetap sama (unique ignore self)</td>
+                <td>{ name:"Nama Sama" } (nama asli)</td>
+                <td>302<br>Kategori diupdate, slug di-regenerate</td>
+            </tr>
+            <tr>
+                <td>WB-50</td>
+                <td><u>destroyCategory()</u></td>
+                <td>Kategori valid dihapus</td>
+                <td>Category ID valid</td>
+                <td>302<br>Kategori dihapus, redirect ke index</td>
+            </tr>
+
+            <!-- ==================== ADMIN PROYEK ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">G. Modul Proyek (Admin)</td>
+            </tr>
+            <tr>
+                <td>WB-51</td>
+                <td><u>storeProject()</u></td>
+                <td>Tanpa gambar (images kosong)</td>
+                <td>{ title:"Proyek A", category_id:1, project_date:"2026-01-01", description:"Desc" }</td>
+                <td>422<br>"The images field is required"</td>
+            </tr>
+            <tr>
+                <td>WB-52</td>
+                <td><u>storeProject()</u></td>
+                <td>Data valid dengan gambar, featured_image di-set</td>
+                <td>{ title:"Proyek A", category_id:1, project_date:"2026-01-01", description:"Desc",
+                    images:[img1,img2], featured_image:0 }</td>
+                <td>302<br>Proyek &amp; gambar tersimpan, index 0 is_featured=true</td>
+            </tr>
+            <tr>
+                <td>WB-53</td>
+                <td><u>updateProject()</u></td>
+                <td>Update tanpa gambar baru, featured image lama dipilih</td>
+                <td>{ ..., existing_featured_image:5 }</td>
+                <td>302<br>existing_featured_image di-set is_featured=true</td>
+            </tr>
+            <tr>
+                <td>WB-54</td>
+                <td><u>updateProject()</u></td>
+                <td>Update dengan gambar baru, index baru di-set featured</td>
+                <td>{ ..., images:[newImg], featured_image_index:0 }</td>
+                <td>302<br>Gambar lama is_featured=false, gambar baru is_featured=true</td>
+            </tr>
+            <tr>
+                <td>WB-55</td>
+                <td><u>updateProject()</u></td>
+                <td>Tidak ada featured dipilih → gambar pertama jadi featured</td>
+                <td>{ ..., existing_featured_image:null } (tanpa gambar baru)</td>
+                <td>302<br>Gambar pertama otomatis is_featured=true</td>
+            </tr>
+
+            <!-- ==================== ADMIN ORDER ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">H. Modul Order (Admin)</td>
+            </tr>
+            <tr>
+                <td>WB-56</td>
+                <td><u>updateOrder()</u></td>
+                <td>Status tidak valid</td>
+                <td>{ status:"unknown_status" }</td>
+                <td>422<br>"The selected status is invalid"</td>
+            </tr>
+            <tr>
+                <td>WB-57</td>
+                <td><u>updateOrder()</u></td>
+                <td>Update berhasil tanpa foto</td>
+                <td>{ status:"in_progress", progress_details:"Sedang dikerjakan", team_members:[1,2] }</td>
+                <td>302<br>OrderDetail baru dibuat, notifikasi terkirim</td>
+            </tr>
+            <tr>
+                <td>WB-58</td>
+                <td><u>updateOrder()</u></td>
+                <td>Update berhasil dengan foto baru</td>
+                <td>{ status:"completed", progress_details:"Selesai", new_photos:[photo1.jpg] }</td>
+                <td>302<br>Foto diupload, OrderDetail dengan photos</td>
+            </tr>
+            <tr>
+                <td>WB-59</td>
+                <td><u>updateOrder()</u></td>
+                <td>Order tidak punya user (user null)</td>
+                <td>order→user = null</td>
+                <td>302<br>OrderDetail dibuat, notifikasi TIDAK terkirim</td>
+            </tr>
+
+            <!-- ==================== ADMIN USER ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">I. Modul Manajemen User (Admin)</td>
+            </tr>
+            <tr>
+                <td>WB-60</td>
+                <td><u>indexUsers()</u></td>
+                <td>Pencarian dengan keyword</td>
+                <td>{ search:"john" }</td>
+                <td>200<br>Hanya user dengan nama/email mengandung "john"</td>
+            </tr>
+            <tr>
+                <td>WB-61</td>
+                <td><u>indexUsers()</u></td>
+                <td>Sort by kolom yang diizinkan</td>
+                <td>{ sort:"name", direction:"asc" }</td>
+                <td>200<br>User diurutkan nama ascending</td>
+            </tr>
+            <tr>
+                <td>WB-62</td>
+                <td><u>indexUsers()</u></td>
+                <td>Sort by kolom TIDAK diizinkan</td>
+                <td>{ sort:"password", direction:"asc" }</td>
+                <td>200<br>Sort diabaikan, default created_at desc</td>
+            </tr>
+            <tr>
+                <td>WB-63</td>
+                <td><u>resetUserPassword()</u></td>
+                <td>Password &lt; 8 karakter</td>
+                <td>{ password:"short", password_confirmation:"short" }</td>
+                <td>422<br>"Password minimal 8 karakter"</td>
+            </tr>
+            <tr>
+                <td>WB-64</td>
+                <td><u>resetUserPassword()</u></td>
+                <td>Password valid &amp; confirmed</td>
+                <td>{ password:"NewPass123", password_confirmation:"NewPass123" }</td>
+                <td>302<br>Password di-hash &amp; diupdate, redirect ke index</td>
+            </tr>
+
+            <!-- ==================== ADMIN TEAM ==================== -->
+            <tr>
+                <td colspan="5" class="section-header">J. Modul Tim (Admin)</td>
+            </tr>
+            <tr>
+                <td>WB-65</td>
+                <td><u>storeTeamMember()</u></td>
+                <td>Posisi tidak valid (tidak ada di daftar)</td>
+                <td>{ name:"John", position:"CEO" }</td>
+                <td>422<br>"The selected position is invalid"</td>
+            </tr>
+            <tr>
+                <td>WB-66</td>
+                <td><u>storeTeamMember()</u></td>
+                <td>Data valid dengan foto</td>
+                <td>{ name:"John", position:"Head of Design", photo:valid.jpg }</td>
+                <td>302<br>Anggota tim tersimpan, foto diupload</td>
+            </tr>
+            <tr>
+                <td>WB-67</td>
+                <td><u>storeTeamMember()</u></td>
+                <td>Data valid tanpa foto</td>
+                <td>{ name:"John", position:"Head of Design" }</td>
+                <td>302<br>Anggota tim tersimpan tanpa photo_path</td>
+            </tr>
+            <tr>
+                <td>WB-68</td>
+                <td><u>updateTeamMember()</u></td>
+                <td>Upload foto baru, foto lama ada → dihapus</td>
+                <td>{ name:"John", position:"Head of Design", photo:new.jpg }</td>
+                <td>302<br>Foto lama dihapus, foto baru diupload</td>
+            </tr>
+            <tr>
+                <td>WB-69</td>
+                <td><u>updateTeamMember()</u></td>
+                <td>Remove foto (checkbox)</td>
+                <td>{ name:"John", position:"Head of Design", remove_photo:true }</td>
+                <td>302<br>photo_path = null, file dihapus</td>
+            </tr>
+            <tr>
+                <td>WB-70</td>
+                <td><u>destroyTeamMember()</u></td>
+                <td>Anggota tim memiliki foto</td>
+                <td>TeamMember dengan photo_path</td>
+                <td>302<br>Foto dihapus dari storage, anggota dihapus</td>
+            </tr>
+            <tr>
+                <td>WB-71</td>
+                <td><u>destroyTeamMember()</u></td>
+                <td>Anggota tim tanpa foto</td>
+                <td>TeamMember tanpa photo_path</td>
+                <td>302<br>Anggota dihapus, tidak ada penghapusan file</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
